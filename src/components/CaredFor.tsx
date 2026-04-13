@@ -185,7 +185,7 @@ const CardItem = ({ card, index }: { card: Card; index: number }) => {
       <div ref={iconRef} className="flex h-48.75 w-full justify-center items-center shrink-0 origin-center">
         <card.Illustration />
       </div>
-      <p className={`font-sans w-full text-center ${card.text} text-[28px] leading-[1.1] min-w-full drop-shadow-none`}>
+      <p className={`font-jua w-full text-center ${card.text} text-[28px] leading-[1.1] min-w-full drop-shadow-none`}>
         {card.title}
       </p>
     </div>
