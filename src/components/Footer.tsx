@@ -1,9 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import gsap from "gsap";
 
 export default function Footer() {
+  const [isCreditsOpen, setIsCreditsOpen] = useState(false);
+
   const playHoverSound = () => {
     const audio = new Audio('/sfx/click.wav');
     audio.volume = 0.15;
@@ -99,18 +102,68 @@ export default function Footer() {
         </div>
 
         {/* Bottom Credits */}
-        <div className="w-full flex flex-col md:flex-row items-center justify-between border-t-2 border-[#e5effe] pt-6 font-plus font-medium text-[#353973]/60 text-sm">
+        <div className="w-full flex flex-col md:flex-row items-center justify-between border-t-2 border-[#e5effe] pt-6 font-plus font-medium text-[#353973]/60 text-sm flex-wrap gap-4">
           <p>
-            A <a href="https://hackclub.com" target="_blank" className="text-[#F98866] hover:underline hover:text-[#1fa1dd] cursor-pointer">ysws</a> by <a href="https://shashwt.notion.site" target="_blank" className="text-[#1fa1dd] hover:underline cursor-pointer">shashwat</a>
+            A <a href="https://hackclub.com" target="_blank" className="text-[#F98866] hover:underline hover:text-[#1fa1dd] cursor-pointer relative z-10">ysws</a> by <a href="https://shashwt.notion.site" target="_blank" className="text-[#1fa1dd] hover:underline cursor-pointer relative z-10">shashwat</a>
           </p>
-          <div className="flex gap-6 mt-4 md:mt-0">
+          <div className="flex gap-6 md:mt-0 relative z-10">
             <Link href="#faq" className="hover:text-[#1fa1dd] cursor-pointer transition-colors">FAQ</Link>
             <Link href="#shop" className="hover:text-[#1fa1dd] cursor-pointer transition-colors">Shop</Link>
+            <button onClick={() => setIsCreditsOpen(true)} className="hover:text-[#1fa1dd] cursor-pointer transition-colors font-medium">Credits</button>
             <Link href="https://hackclub.com/slack" target="_blank" className="hover:text-[#1fa1dd] cursor-pointer transition-colors">Slack</Link>
           </div>
         </div>
 
       </div>
+
+      {/* Credits Dialog */}
+      {isCreditsOpen && (
+        <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
+          <div 
+            className="absolute inset-0 bg-[#353973]/40 backdrop-blur-sm transition-opacity" 
+            onClick={() => setIsCreditsOpen(false)} 
+          />
+          <div className="relative bg-white w-full max-w-md rounded-[24px] border-[3px] border-[#353973] shadow-lg p-8 overflow-hidden animate-in fade-in zoom-in duration-200">
+            <h3 className="font-jua text-[#353973] text-[32px] text-center mb-6 relative z-10 leading-none">
+              CREDITS
+            </h3>
+
+            <div className="flex justify-center flex-col gap-8 font-plus text-[#353973]/80 relative z-10 text-center">
+              <div>
+                <p className="font-bold text-[#1fa1dd] text-lg mb-2">Illustrations</p>
+                <div className="text-sm font-medium leading-relaxed">
+                  <p className="mb-3">
+                    A massive thanks to <a href="https://www.instagram.com/starrie.kun" target="_blank" className="text-[#F98866] hover:text-[#1fa1dd] hover:underline whitespace-nowrap">Starrie 🌟</a> for helping out with artwork, including the:
+                  </p>
+                  <ul className="inline-block text-left list-disc list-inside text-[#353973] space-y-1">
+                    <li>Logo</li>
+                    <li>Hero cover art</li>
+                    <li>Steps art</li>
+                    <li>Stickers</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div>
+                <p className="font-bold text-[#1fa1dd] text-lg mb-1">Sound Effects</p>
+                <p className="text-sm font-medium leading-relaxed">
+                  "Navigation Tap Select"<br/>
+                  Downloaded from <a href="https://tunetank.com" target="_blank" className="text-[#F98866] hover:text-[#1fa1dd] hover:underline break-words">Tunetank</a>
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-8 flex justify-center relative z-10">
+              <button 
+                onClick={() => setIsCreditsOpen(false)}
+                className="bg-[#353973] text-[#e5effe] font-jua text-xl px-10 py-3 rounded-full hover:bg-[#F98866] hover:text-white transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 }
