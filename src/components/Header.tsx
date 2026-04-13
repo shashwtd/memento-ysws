@@ -126,31 +126,31 @@ export default function Header() {
           className={`bg-[#e5effe] flex gap-[2px] items-center py-[8px] px-[12px] rounded-full font-plus font-bold`}
         >
           <Link
+            href="#who"
+            onMouseEnter={handleNavEnter}
+            onMouseLeave={handleNavLeave}
+            className="text-[#353973] text-[16px] whitespace-nowrap px-4 py-[6px] rounded-full inline-block relative border border-transparent cursor-pointer"
+            style={{ backgroundColor: "rgba(205, 220, 246, 0)" }}
+          >
+            Who for
+          </Link>
+          <Link
+            href="#how"
+            onMouseEnter={handleNavEnter}
+            onMouseLeave={handleNavLeave}
+            className="text-[#353973] text-[16px] whitespace-nowrap px-4 py-[6px] rounded-full inline-block relative border border-transparent cursor-pointer"
+            style={{ backgroundColor: "rgba(205, 220, 246, 0)" }}
+          >
+            How it works
+          </Link>
+          <Link
             href="#faq"
             onMouseEnter={handleNavEnter}
             onMouseLeave={handleNavLeave}
-            className="text-[#353973] text-[16px] whitespace-nowrap px-4 py-[6px] rounded-full inline-block relative border border-transparent"
+            className="text-[#353973] text-[16px] whitespace-nowrap px-4 py-[6px] rounded-full inline-block relative border border-transparent cursor-pointer"
             style={{ backgroundColor: "rgba(205, 220, 246, 0)" }}
           >
             FAQ
-          </Link>
-          <Link
-            href="#shop"
-            onMouseEnter={handleNavEnter}
-            onMouseLeave={handleNavLeave}
-            className="text-[#353973] text-[16px] whitespace-nowrap px-4 py-[6px] rounded-full inline-block relative border border-transparent"
-            style={{ backgroundColor: "rgba(205, 220, 246, 0)" }}
-          >
-            Shop
-          </Link>
-          <Link
-            href="#projects"
-            onMouseEnter={handleNavEnter}
-            onMouseLeave={handleNavLeave}
-            className="text-[#353973] text-[16px] whitespace-nowrap px-4 py-[6px] rounded-full inline-block relative border border-transparent"
-            style={{ backgroundColor: "rgba(205, 220, 246, 0)" }}
-          >
-            Projects
           </Link>
         </nav>
 

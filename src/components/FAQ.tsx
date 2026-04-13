@@ -62,11 +62,11 @@ const FAQItem = ({ faq, index, isOpen, toggleOpen }: any) => {
         scale: 1.2,
         duration: 0.5,
         ease: "back.out(1.5)",
-        color: "#F98866" // Coral color on open
+        color: "#1fa1dd" // Vibrant blue on open
       });
       gsap.to(containerRef.current, {
         backgroundColor: "#ffffff",
-        borderColor: "#F98866",
+        borderColor: "#1fa1dd",
         scale: 1.02,
         duration: 0.4,
         ease: "power2.out",
@@ -170,13 +170,13 @@ const FAQItem = ({ faq, index, isOpen, toggleOpen }: any) => {
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const dividerPattern = `url("data:image/svg+xml,%3Csvg width='120' height='30' viewBox='0 0 120 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 15 Q30 0, 60 15 T120 15' fill='none' stroke='%23F98866' stroke-width='4' stroke-linecap='round' stroke-dasharray='1 14'/%3E%3C/svg%3E")`;
+  const dividerPattern = `url("data:image/svg+xml,%3Csvg width='120' height='30' viewBox='0 0 120 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 15 Q30 0, 60 15 T120 15' fill='none' stroke='%231fa1dd' stroke-width='4' stroke-linecap='round' stroke-dasharray='1 14'/%3E%3C/svg%3E")`;
 
   return (
     <section id="faq" className="w-full bg-[#e5effe] py-24 relative">
       {/* Playful Dotted Wave Divider */}
       <div
-        className="absolute top-0 left-0 w-full h-[30px] -translate-y-1/2 pointer-events-none z-10"
+        className="absolute top-0 left-0 w-full h-[30px] -translate-y-1/2 pointer-events-none z-[50]"
         style={{ backgroundImage: dividerPattern, backgroundRepeat: "repeat-x" }}
       />
       

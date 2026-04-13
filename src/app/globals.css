@@ -19,16 +19,17 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-jua);
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html,
 body,
 * {
   cursor: url("/cursor-default.svg") 0 0, auto;
-}
-
-*:active {
-  cursor: url("/cursor-active.svg") 0 0, auto;
 }
 
 a, a *,
