@@ -202,7 +202,7 @@ export default function CaredFor() {
       />
       
       <div className="max-w-7xl mx-auto w-full flex flex-col items-center gap-11 px-2.5 relative z-10">
-        <h2 className="font-sans text-[#F98866] text-[42px] tracking-[-0.84px] text-center mb-5">
+        <h2 className="font-jua text-[#F98866] text-[42px] tracking-[-0.84px] text-center mb-5">
           WHO ARE YOU BUILDING FOR?
         </h2>
         
