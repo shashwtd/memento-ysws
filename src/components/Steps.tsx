@@ -31,16 +31,16 @@ export default function Steps() {
   const dividerPattern = `url("data:image/svg+xml,%3Csvg width='120' height='30' viewBox='0 0 120 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 15 Q30 0, 60 15 T120 15' fill='none' stroke='%23F98866' stroke-width='4' stroke-linecap='round' stroke-dasharray='1 14'/%3E%3C/svg%3E")`;
 
   return (
-    <section id="how" className="w-full bg-white relative py-[80px] md:py-[120px]">
+    <section id="how" className="w-full bg-white relative py-20 md:py-30">
       {/* Playful Dotted Wave Divider */}
       <div 
-        className="absolute top-0 left-0 w-full h-[30px] -translate-y-1/2 pointer-events-none z-[50]"
+        className="absolute top-0 left-0 w-full h-7.5 -translate-y-1/2 pointer-events-none z-50"
         style={{ backgroundImage: dividerPattern, backgroundRepeat: "repeat-x" }}
       />
       
-      <div className="max-w-[1280px] mx-auto px-[24px]">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Title */}
-        <div className="text-center mb-[40px] md:mb-[60px]">
+        <div className="text-center mb-10 md:mb-15">
           <h2 className="font-jua text-[#353973] text-[40px] md:text-[56px] leading-[1.1]">
             HOW MEMENTO WORKS
           </h2>
@@ -50,10 +50,10 @@ export default function Steps() {
         </div>
 
         {/* Steps */}
-        <div className="relative flex flex-col gap-[60px] md:gap-[20px] max-w-[1100px] mx-auto">
+        <div className="relative flex flex-col gap-15 md:gap-5 max-w-275 mx-auto">
           
           {/* Playful Wiggly Trail Background (Desktop only) */}
-          <div className="absolute top-[12%] bottom-[12%] left-1/2 -translate-x-1/2 w-[500px] hidden md:block pointer-events-none z-0">
+          <div className="absolute top-[12%] bottom-[12%] left-1/2 -translate-x-1/2 w-125 hidden md:block pointer-events-none z-0">
             <svg 
               width="100%" 
               height="100%" 
@@ -82,11 +82,11 @@ export default function Steps() {
             return (
               <div 
                 key={index}
-                className={`flex flex-col ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'} items-center justify-center gap-[20px] md:gap-[60px] w-full relative z-10`}
+                className={`flex flex-col ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'} items-center justify-center gap-5 md:gap-15 w-full relative z-10`}
               >
                 {/* Illustration */}
                 <div className={`w-full md:w-1/2 flex justify-center ${isLeft ? 'md:justify-end' : 'md:justify-start'} items-center`}>
-                  <div className="relative w-full max-w-[500px] aspect-square">
+                  <div className="relative w-full max-w-125 aspect-square">
                     <Image 
                       src={step.image} 
                       alt={step.title} 
@@ -101,7 +101,7 @@ export default function Steps() {
                   <h3 className={`font-jua text-[32px] md:text-[40px] leading-[1.1] ${step.color}`}>
                     {step.title}
                   </h3>
-                  <p className={`font-plus text-[#353973] text-[16px] md:text-[18px] font-medium leading-[1.5] max-w-[420px] mx-auto ${isLeft ? 'md:ml-0 md:mr-auto' : 'md:mr-0 md:ml-auto'}`}>
+                  <p className={`font-plus text-[#353973] text-[16px] md:text-[18px] font-medium leading-normal max-w-105 mx-auto ${isLeft ? 'md:ml-0 md:mr-auto' : 'md:mr-0 md:ml-auto'}`}>
                     {step.description}
                   </p>
                 </div>

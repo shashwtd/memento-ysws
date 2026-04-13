@@ -22,7 +22,19 @@ const faqs = [
   }
 ];
 
-const FAQItem = ({ faq, index, isOpen, toggleOpen }: any) => {
+type Faq = {
+  q: string;
+  a: string;
+};
+
+type FAQItemProps = {
+  faq: Faq;
+  index: number;
+  isOpen: boolean;
+  toggleOpen: (index: number) => void;
+};
+
+const FAQItem = ({ faq, index, isOpen, toggleOpen }: FAQItemProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const iconRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -134,7 +146,7 @@ const FAQItem = ({ faq, index, isOpen, toggleOpen }: any) => {
       }}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
-      className="border-[3px] border-[#353973] rounded-[24px] p-6 cursor-pointer transform-gpu overflow-hidden"
+      className="border-[3px] border-[#353973] rounded-3xl p-6 cursor-pointer transform-gpu overflow-hidden"
       style={{ backgroundColor: "rgba(255,255,255,0.4)" }}  // Prevents the white flash!
     >
       <div className="flex justify-between items-center gap-4">
@@ -176,17 +188,17 @@ export default function FAQ() {
     <section id="faq" className="w-full bg-[#e5effe] py-24 relative">
       {/* Playful Dotted Wave Divider */}
       <div
-        className="absolute top-0 left-0 w-full h-[30px] -translate-y-1/2 pointer-events-none z-[50]"
+        className="absolute top-0 left-0 w-full h-7.5 -translate-y-1/2 pointer-events-none z-50"
         style={{ backgroundImage: dividerPattern, backgroundRepeat: "repeat-x" }}
       />
       
-      <div className="max-w-[800px] mx-auto px-6">
+      <div className="max-w-200 mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="font-jua text-5xl md:text-6xl text-[#353973] mb-4">
             Got Questions?
           </h2>
           <p className="font-plus font-bold text-xl text-[#F98866]">
-            We've got answers!
+            We&apos;ve got answers!
           </p>
         </div>
         

@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 
 const BestFriendSvg = () => (
-  <div className="flex gap-[12px] h-full items-center justify-center -ml-[30px]">
+  <div className="flex gap-3 h-full items-center justify-center -ml-7.5">
     <div className="cared-character origin-center">
       <svg width="110" height="110" viewBox="0 0 126 126" fill="none">
         <rect x="0.25" y="0.25" width="125.5" height="125.5" rx="62.75" fill="white"/>
@@ -12,7 +12,7 @@ const BestFriendSvg = () => (
         <path d="M40 69.3821C46.6197 95.8962 84.9003 95.8381 90.0515 69" stroke="#F1BFAA" strokeWidth="10" strokeLinecap="round"/>
       </svg>
     </div>
-    <div className="cared-character origin-center -ml-[45px] mt-[40px]">
+    <div className="cared-character origin-center -ml-11.25 mt-10">
       <svg width="110" height="110" viewBox="0 0 126 126" fill="none">
         <rect x="0.25" y="0.25" width="125.5" height="125.5" rx="62.75" fill="white"/>
         <circle cx="62.75" cy="62.75" r="57.75" stroke="#8ACAD8" strokeWidth="10"/>
@@ -25,9 +25,9 @@ const BestFriendSvg = () => (
 );
 
 const FamilySvg = () => (
-  <div className="flex items-center justify-center relative w-[190px] h-[140px]">
+  <div className="flex items-center justify-center relative w-47.5 h-35">
     {/* Parent 1 (Left) */}
-    <div className="absolute left-[10px] top-[10px] z-10 cared-character origin-center">
+    <div className="absolute left-2.5 top-2.5 z-10 cared-character origin-center">
       <svg width="90" height="90" viewBox="0 0 126 126" fill="none">
         <rect x="0.25" y="0.25" width="125.5" height="125.5" rx="62.75" fill="white"/>
         <circle cx="62.75" cy="62.75" r="57.75" stroke="#C4B5FD" strokeWidth="10"/>
@@ -37,7 +37,7 @@ const FamilySvg = () => (
       </svg>
     </div>
     {/* Parent 2 (Right) */}
-    <div className="absolute right-[10px] top-[10px] z-10 cared-character origin-center">
+    <div className="absolute right-2.5 top-2.5 z-10 cared-character origin-center">
       <svg width="90" height="90" viewBox="0 0 126 126" fill="none">
         <rect x="0.25" y="0.25" width="125.5" height="125.5" rx="62.75" fill="white"/>
         <circle cx="62.75" cy="62.75" r="57.75" stroke="#93C5FD" strokeWidth="10"/>
@@ -47,7 +47,7 @@ const FamilySvg = () => (
       </svg>
     </div>
     {/* Baby (Middle) */}
-    <div className="absolute left-1/2 -translate-x-1/2 bottom-[10px] z-20">
+    <div className="absolute left-1/2 -translate-x-1/2 bottom-2.5 z-20">
       <div className="cared-character origin-center">
         <svg width="65" height="65" viewBox="0 0 126 126" fill="none">
           <rect x="0.25" y="0.25" width="125.5" height="125.5" rx="62.75" fill="white"/>
@@ -112,13 +112,13 @@ const cards = [
     Illustration: FamilySvg,
   },
   { 
-    title: "IS THAT THE GIRL YOU LIKE?",
+    title: "MAYBE FOR THE GIRL YOU LIKE?",
     bg: "bg-white",
     text: "text-[#ff9b9b]",
     Illustration: CrushSvg,
   },
   { 
-    title: "THAT ONE RANDOM PERSON YOU MET",
+    title: "OR THAT RANDOM PERSON YOU MET",
     bg: "bg-white",
     text: "text-[#ff9b9b]",
     Illustration: RandomPersonSvg,
@@ -127,7 +127,14 @@ const cards = [
 
 const dividerPattern = `url("data:image/svg+xml,%3Csvg width='120' height='30' viewBox='0 0 120 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 15 Q30 0, 60 15 T120 15' fill='none' stroke='%23F98866' stroke-width='4' stroke-linecap='round' stroke-dasharray='1 14'/%3E%3C/svg%3E")`;
 
-const CardItem = ({ card, index }: { card: any; index: number }) => {
+type Card = {
+  title: string;
+  bg: string;
+  text: string;
+  Illustration: React.ComponentType;
+};
+
+const CardItem = ({ card, index }: { card: Card; index: number }) => {
   const iconRef = useRef<HTMLDivElement>(null);
 
   const playHoverSound = () => {
@@ -173,9 +180,9 @@ const CardItem = ({ card, index }: { card: any; index: number }) => {
     <div
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
-      className={`${card.bg} select-none cursor-pointer transition-all duration-300 ease-out hover:-translate-y-1 flex flex-col items-center justify-between p-[24px] rounded-[22px] min-h-[313px] drop-shadow-none`}
+      className={`${card.bg} select-none cursor-pointer transition-all duration-300 ease-out hover:-translate-y-1 flex flex-col items-center justify-between p-6 rounded-[22px] min-h-78.25 drop-shadow-none`}
     >
-      <div ref={iconRef} className="flex h-[195px] w-full justify-center items-center shrink-0 origin-center">
+      <div ref={iconRef} className="flex h-48.75 w-full justify-center items-center shrink-0 origin-center">
         <card.Illustration />
       </div>
       <p className={`font-sans w-full text-center ${card.text} text-[28px] leading-[1.1] min-w-full drop-shadow-none`}>
@@ -187,19 +194,19 @@ const CardItem = ({ card, index }: { card: any; index: number }) => {
 
 export default function CaredFor() {
   return (
-    <section id="who" className="bg-[#FDF0CB] w-full flex flex-col items-center justify-center pt-[80px] pb-[124px] relative border-t-0">
+    <section id="who" className="bg-[#FDF0CB] w-full flex flex-col items-center justify-center pt-20 pb-31 relative border-t-0">
       {/* Playful Dotted Wave Divider */}
       <div 
-        className="absolute top-0 left-0 w-full h-[30px] -translate-y-1/2 pointer-events-none z-[50]"
+        className="absolute top-0 left-0 w-full h-7.5 -translate-y-1/2 pointer-events-none z-50"
         style={{ backgroundImage: dividerPattern, backgroundRepeat: "repeat-x" }}
       />
       
-      <div className="max-w-[1280px] mx-auto w-full flex flex-col items-center gap-[44px] px-[10px] relative z-10">
-        <h2 className="font-sans text-[#F98866] text-[42px] tracking-[-0.84px] text-center mb-[20px]">
+      <div className="max-w-7xl mx-auto w-full flex flex-col items-center gap-11 px-2.5 relative z-10">
+        <h2 className="font-sans text-[#F98866] text-[42px] tracking-[-0.84px] text-center mb-5">
           WHO ARE YOU BUILDING FOR?
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[16px] w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
           {cards.map((card, index) => (
             <CardItem key={index} card={card} index={index} />
           ))}

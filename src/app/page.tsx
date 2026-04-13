@@ -13,7 +13,7 @@ export default function Home() {
       <section className="w-full bg-white relative overflow-hidden">
         {/* Full bleed background art */}
         <div className="absolute inset-0 z-0 pointer-events-none flex justify-center items-center">
-          <div className="relative w-full max-w-[1050px] opacity-60 h-full mx-auto">        
+          <div className="relative w-full max-w-262.5 opacity-60 h-full mx-auto">
             <Image
               src="/hero-art.jpg"
               alt="Memento Hero Art"
@@ -24,10 +24,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative z-10 max-w-[1280px] mx-auto min-h-[400px] md:min-h-[550px] flex items-center justify-center py-14 px-[24px]">
+        <div className="relative z-10 max-w-7xl mx-auto min-h-100 md:min-h-137.5 flex items-center justify-center py-14 px-6">
           <div className="text-center">
-            <h1 className="text-[40px] md:text-[56px] leading-[1.05] tracking-tighter text-[#353973] max-w-[650px] mx-auto font-jua">
-              Build something for someone you love. We'll ship it to them.      
+            <h1 className="text-[40px] md:text-[56px] leading-[1.05] tracking-tighter text-[#353973] max-w-162.5 mx-auto font-jua">
+              Build something for someone you love. We&apos;ll help you send some gifts
             </h1>
           </div>
         </div>

@@ -7,11 +7,12 @@
   --font-plus-jakarta-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-jua);
-  --font-plus: var(--font-plus-jakarta-sans);
+.font-jua {
+  font-family: var(--font-jua);
+}
+
+.font-plus {
+  font-family: var(--font-plus-jakarta-sans);
 }
 
 
