@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
-import { Jua } from "next/font/google";
+import { Jua, Plus_Jakarta_Sans } from "next/font/google";
 import Header from "@/components/Header";
 import "./globals.css";
 
 const jua = Jua({
   weight: "400",
   variable: "--font-jua",
+  subsets: ["latin"],
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta-sans",
   subsets: ["latin"],
 });
 
@@ -22,7 +27,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jua.variable} h-full antialiased`}
+      className={`${jua.variable} ${plusJakartaSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Header />
