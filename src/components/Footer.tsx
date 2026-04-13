@@ -118,12 +118,12 @@ export default function Footer() {
 
       {/* Credits Dialog */}
       {isCreditsOpen && (
-        <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-999 flex items-center justify-center p-4">
           <div 
             className="absolute inset-0 bg-[#353973]/40 backdrop-blur-sm transition-opacity" 
             onClick={() => setIsCreditsOpen(false)} 
           />
-          <div className="relative bg-white w-full max-w-md rounded-[24px] border-[3px] border-[#353973] shadow-lg p-8 overflow-hidden animate-in fade-in zoom-in duration-200">
+          <div className="relative bg-white w-full max-w-md rounded-3xl border-[3px] border-[#353973] shadow-lg p-8 overflow-hidden animate-in fade-in zoom-in duration-200">
             <h3 className="font-jua text-[#353973] text-[32px] text-center mb-6 relative z-10 leading-none">
               CREDITS
             </h3>
@@ -133,7 +133,7 @@ export default function Footer() {
                 <p className="font-bold text-[#1fa1dd] text-lg mb-2">Illustrations</p>
                 <div className="text-sm font-medium leading-relaxed">
                   <p className="mb-3">
-                    A massive thanks to <a href="https://www.instagram.com/starrie.kun" target="_blank" className="text-[#F98866] hover:text-[#1fa1dd] hover:underline whitespace-nowrap">Starrie 🌟</a> for helping out with artwork, including the:
+                    Big thanks to <a href="https://www.instagram.com/starrie.kun" target="_blank" rel="noreferrer" className="text-[#F98866] hover:text-[#1fa1dd] hover:underline whitespace-nowrap">@starrie.kun</a> for helping out with the drawings because I suck at it.
                   </p>
                   <ul className="inline-block text-left list-disc list-inside text-[#353973] space-y-1">
                     <li>Logo</li>
@@ -147,8 +147,8 @@ export default function Footer() {
               <div>
                 <p className="font-bold text-[#1fa1dd] text-lg mb-1">Sound Effects</p>
                 <p className="text-sm font-medium leading-relaxed">
-                  "Navigation Tap Select"<br/>
-                  Downloaded from <a href="https://tunetank.com" target="_blank" className="text-[#F98866] hover:text-[#1fa1dd] hover:underline break-words">Tunetank</a>
+                  &quot;Navigation Tap Select&quot;<br/>
+                  Downloaded from <a href="https://tunetank.com" target="_blank" rel="noreferrer" className="text-[#F98866] hover:text-[#1fa1dd] hover:underline wrap-break-word">Tunetank</a>
                 </p>
               </div>
             </div>
