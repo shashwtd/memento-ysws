@@ -27,13 +27,32 @@ body,
   cursor: url("/cursor-default.svg") 0 0, auto;
 }
 
-a,
-button,
-[role="button"],
+*:active {
+  cursor: url("/cursor-active.svg") 0 0, auto;
+}
+
+a, a *,
+button, button *,
+[role="button"], [role="button"] *,
 input[type="button"],
 input[type="submit"],
-label[for],
-select,
-summary {
-  cursor: url("/cursor-pointer.svg") 0 0, pointer;
+label[for], label[for] *,
+select, select *,
+summary, summary *,
+.cursor-pointer,
+.cursor-pointer * {
+  cursor: url("/cursor-pointer.svg") 0 0, pointer !important;
+}
+
+a:active, a:active *,
+button:active, button:active *,
+[role="button"]:active, [role="button"]:active *,
+input[type="button"]:active,
+input[type="submit"]:active,
+label[for]:active, label[for]:active *,
+select:active, select:active *,
+summary:active, summary:active *,
+.cursor-pointer:active,
+.cursor-pointer:active * {
+  cursor: url("/cursor-active.svg") 0 0, pointer !important;
 }

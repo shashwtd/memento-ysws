@@ -1,6 +1,7 @@
 "use client";
 
 import CaredFor from "@/components/CaredFor";
+import FAQ from "@/components/FAQ";
 
 export default function Home() {
   return (
@@ -18,6 +19,9 @@ export default function Home() {
 
       {/* Cared For Section */}
       <CaredFor />
+
+      {/* FAQ Section */}
+      <FAQ />
     </main>
   );
 }
