@@ -101,7 +101,7 @@ export default function Footer() {
         {/* Bottom Credits */}
         <div className="w-full flex flex-col md:flex-row items-center justify-between border-t-2 border-[#e5effe] pt-6 font-plus font-medium text-[#353973]/60 text-sm">
           <p>
-            A <a href="https://hackclub.com" target="_blank" className="text-[#F98866] hover:underline hover:text-[#1fa1dd] cursor-pointer">You Ship, We Ship</a> by Hack Club
+            A <a href="https://hackclub.com" target="_blank" className="text-[#F98866] hover:underline hover:text-[#1fa1dd] cursor-pointer">ysws</a> by <a href="https://shashwt.notion.site" target="_blank" className="text-[#1fa1dd] hover:underline cursor-pointer">shashwat</a>
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
             <Link href="#faq" className="hover:text-[#1fa1dd] cursor-pointer transition-colors">FAQ</Link>
