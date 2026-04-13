@@ -2,9 +2,27 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 export default function Header() {
+  const [isRsvpToastOpen, setIsRsvpToastOpen] = useState(false);
+  const toastRef = useRef<HTMLDivElement>(null);
+  const hideTimerRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const toastElement = toastRef.current;
+
+    return () => {
+      if (hideTimerRef.current) {
+        window.clearTimeout(hideTimerRef.current);
+      }
+      if (toastElement) {
+        gsap.killTweensOf(toastElement);
+      }
+    };
+  }, []);
+
   const playHoverSound = () => {
     const audio = new Audio('/sfx/click.wav');
     audio.volume = 0.15;
@@ -102,6 +120,41 @@ export default function Header() {
     }
   };
 
+  const handleRsvpClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setIsRsvpToastOpen(true);
+
+    window.requestAnimationFrame(() => {
+      if (!toastRef.current) return;
+      gsap.killTweensOf(toastRef.current);
+      gsap.fromTo(
+        toastRef.current,
+        { y: 56, opacity: 0, scale: 0.9 },
+        { y: 0, opacity: 1, scale: 1, duration: 0.45, ease: "power3.out" }
+      );
+    });
+
+    if (hideTimerRef.current) {
+      window.clearTimeout(hideTimerRef.current);
+    }
+
+    hideTimerRef.current = window.setTimeout(() => {
+      if (!toastRef.current) {
+        setIsRsvpToastOpen(false);
+        return;
+      }
+
+      gsap.to(toastRef.current, {
+        y: 24,
+        opacity: 0,
+        scale: 0.97,
+        duration: 0.35,
+        ease: "power2.inOut",
+        onComplete: () => setIsRsvpToastOpen(false),
+      });
+    }, 3000);
+  };
+
   return (
     <header className="relative z-9999 w-full max-w-7xl mx-auto flex items-center justify-between p-2.5">
       {/* Wrapper receives the hover event to prevent looping on child scale changes */}
@@ -161,6 +214,7 @@ export default function Header() {
             className="cursor-pointer absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-35 h-35 flex items-center justify-center z-10"
             onMouseEnter={handleCtaEnter}
             onMouseLeave={handleCtaLeave}
+            onClick={handleRsvpClick}
           >
             <div
               className={`cta-inner cursor-pointer bg-[#1fa1dd] flex items-center justify-center w-35 h-12 rounded-full text-white text-[16px] font-plus font-bold whitespace-nowrap origin-center relative overflow-hidden`}
@@ -176,6 +230,18 @@ export default function Header() {
           </Link>
         </div>
       </div>
+
+      {isRsvpToastOpen && (
+        <div className="fixed left-1/2 -translate-x-1/2 bottom-6 z-9999 pointer-events-none" aria-live="polite">
+          <div
+            ref={toastRef}
+            className="bg-white/95 backdrop-blur-sm border-[3px] border-[#1fa1dd] rounded-3xl px-6 py-4 shadow-xl text-center max-w-90"
+          >
+            <p className="font-jua text-[#1fa1dd] text-2xl leading-none mb-1">RSVP Opens Soon</p>
+            <p className="font-plus text-[#353973] text-sm font-medium">You&apos;ll be able to RSVP very soon. Stay tuned.</p>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

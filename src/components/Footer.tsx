@@ -1,11 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 export default function Footer() {
   const [isCreditsOpen, setIsCreditsOpen] = useState(false);
+  const [isRsvpSoonOpen, setIsRsvpSoonOpen] = useState(false);
+  const toastRef = useRef<HTMLDivElement>(null);
+  const hideTimerRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (hideTimerRef.current) {
+        window.clearTimeout(hideTimerRef.current);
+      }
+      if (toastRef.current) {
+        gsap.killTweensOf(toastRef.current);
+      }
+    };
+  }, []);
 
   const playHoverSound = () => {
     const audio = new Audio('/sfx/click.wav');
@@ -60,6 +74,41 @@ export default function Footer() {
 
   const dividerPattern = `url("data:image/svg+xml,%3Csvg width='120' height='30' viewBox='0 0 120 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 15 Q30 0, 60 15 T120 15' fill='none' stroke='%231fa1dd' stroke-width='4' stroke-linecap='round' stroke-dasharray='1 14'/%3E%3C/svg%3E")`;
 
+  const handleRsvpClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setIsRsvpSoonOpen(true);
+
+    window.requestAnimationFrame(() => {
+      if (!toastRef.current) return;
+      gsap.killTweensOf(toastRef.current);
+      gsap.fromTo(
+        toastRef.current,
+        { y: 56, opacity: 0, scale: 0.9 },
+        { y: 0, opacity: 1, scale: 1, duration: 0.45, ease: "power3.out" }
+      );
+    });
+
+    if (hideTimerRef.current) {
+      window.clearTimeout(hideTimerRef.current);
+    }
+
+    hideTimerRef.current = window.setTimeout(() => {
+      if (!toastRef.current) {
+        setIsRsvpSoonOpen(false);
+        return;
+      }
+
+      gsap.to(toastRef.current, {
+        y: 24,
+        opacity: 0,
+        scale: 0.97,
+        duration: 0.35,
+        ease: "power2.inOut",
+        onComplete: () => setIsRsvpSoonOpen(false),
+      });
+    }, 3000);
+  };
+
   return (
     <footer className="w-full bg-white relative pt-30 pb-15">
       {/* Blue dotted wave divider bridging FAQ and Footer */}
@@ -86,6 +135,7 @@ export default function Footer() {
             className="cursor-pointer absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-30 h-30 flex items-center justify-center z-10"
             onMouseEnter={handleCtaEnter}
             onMouseLeave={handleCtaLeave}
+            onClick={handleRsvpClick}
           >
             <div
               className={`cta-inner cursor-pointer bg-[#F98866] flex items-center justify-center w-30 h-12 rounded-full text-white text-[16px] font-plus font-bold whitespace-nowrap origin-center relative overflow-hidden`}
@@ -104,13 +154,13 @@ export default function Footer() {
         {/* Bottom Credits */}
         <div className="w-full flex flex-col md:flex-row items-center justify-between border-t-2 border-[#e5effe] pt-6 font-plus font-medium text-[#353973]/60 text-sm flex-wrap gap-4">
           <p>
-            A <a href="https://hackclub.com" target="_blank" className="text-[#F98866] hover:underline hover:text-[#1fa1dd] cursor-pointer relative z-10">ysws</a> by <a href="https://shashwt.notion.site" target="_blank" className="text-[#1fa1dd] hover:underline cursor-pointer relative z-10">shashwat</a>
+            A <a href="https://hackclub.com" target="_blank" rel="noreferrer" className="text-[#F98866] hover:underline hover:text-[#1fa1dd] cursor-pointer relative z-10">ysws</a> by <a href="https://shashwt.notion.site" target="_blank" rel="noreferrer" className="text-[#1fa1dd] hover:underline cursor-pointer relative z-10">shashwat</a>
           </p>
           <div className="flex gap-6 md:mt-0 relative z-10">
             <Link href="#faq" className="hover:text-[#1fa1dd] cursor-pointer transition-colors">FAQ</Link>
             <Link href="#shop" className="hover:text-[#1fa1dd] cursor-pointer transition-colors">Shop</Link>
             <button onClick={() => setIsCreditsOpen(true)} className="hover:text-[#1fa1dd] cursor-pointer transition-colors font-medium">Credits</button>
-            <Link href="https://hackclub.com/slack" target="_blank" className="hover:text-[#1fa1dd] cursor-pointer transition-colors">Slack</Link>
+            <Link href="https://hackclub.com/slack" target="_blank" rel="noreferrer" className="hover:text-[#1fa1dd] cursor-pointer transition-colors">Slack</Link>
           </div>
         </div>
 
@@ -161,6 +211,19 @@ export default function Footer() {
                 Close
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* RSVP Soon Toast */}
+      {isRsvpSoonOpen && (
+        <div className="fixed left-1/2 -translate-x-1/2 bottom-6 z-999 pointer-events-none" aria-live="polite">
+          <div
+            ref={toastRef}
+            className="bg-white/95 backdrop-blur-sm border-[3px] border-[#F98866] rounded-3xl px-6 py-4 shadow-xl text-center max-w-90"
+          >
+            <p className="font-jua text-[#F98866] text-2xl leading-none mb-1">RSVP Opens Soon</p>
+            <p className="font-plus text-[#353973] text-sm font-medium">You&apos;ll be able to RSVP very soon. Stay tuned.</p>
           </div>
         </div>
       )}
