@@ -27,7 +27,7 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto min-h-100 md:min-h-137.5 flex items-center justify-center py-14 px-6">
           <div className="text-center">
             <h1 className="text-[40px] md:text-[56px] leading-[1.05] tracking-tighter text-[#353973] max-w-162.5 mx-auto font-jua">
-              Build something for someone you love. We&apos;ll help you send some gifts
+              Build something for someone you love. We&apos;ll help you send them gifts
             </h1>
           </div>
         </div>
